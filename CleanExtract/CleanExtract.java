@@ -8,19 +8,19 @@ public class CleanExtract {
         StringBuilder result = new StringBuilder();
 
         for (String part : parts) {
+            part = part.trim();
             int firstDot = part.indexOf('.');
             int lastDot = part.lastIndexOf('.');
-            
+
             if (firstDot != -1 && lastDot != -1 && firstDot < lastDot) {
-                // Extract between first and last dot
-                String clean = part.substring(firstDot + 1, lastDot).trim();
-                if (!clean.isEmpty()) {
-                    result.append(clean).append(" ");
-                }
+                part = part.substring(firstDot + 1, lastDot).trim();
+            }
+
+            if (!part.isEmpty()) {
+                result.append(part).append(" ");
             }
         }
 
-        // Remove trailing space
         return result.toString().trim();
     }
 }
