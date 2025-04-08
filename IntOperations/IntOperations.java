@@ -9,6 +9,9 @@ public class IntOperations {
         return a * b;
     }
     public static int divideTwoIntegers(int a, int b) {
+        if (b == 0){
+            throw new ArithmeticException("Division by 0: ");
+        }
         return a / b;
     }
     //main method to test 
@@ -18,7 +21,7 @@ public class IntOperations {
 
         System.out.println("Addition: " + addTwoIntegers(a, b));
         System.out.println("Subtraction: " + subtractTwoIntegers(a, b));
-        System.out.println("Multiplication: " + subtractTwoIntegers(a, b));
+        System.out.println("Multiplication: " + multiplyTwoIntegers(a, b));
         System.out.println("Division: "+ divideTwoIntegers(a, b));
     }
    
