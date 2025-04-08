@@ -1,5 +1,9 @@
-pablic class Main{
-    public static void main(String[] args) {
-        System.out.println("Hello WOrld !")
+public class HelloWorld {
+    public static String helloWorld() {
+        String sms = "Hello World !";
+        System.out.println(sms);
+        return sms
     }
 }
+
+\
