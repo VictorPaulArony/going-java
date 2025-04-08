@@ -1,35 +1,29 @@
 public class CleanExtract {
     public static String extract(String s) {
-        if (s == null || s.isEmpty()) {
-            return "";
+        StringBuilder returnString = new StringBuilder();
+        String[] splitStrings = s.split("\\|");
+        for (int i = 0; i < splitStrings.length; i++) {
+            int startDot = splitStrings[i].indexOf('.');
+            int endDot = splitStrings[i].lastIndexOf('.');
+            if (startDot != -1 && endDot != -1 && startDot < endDot) {
+                String extracted = splitStrings[i].substring(startDot + 1, endDot).trim();
+                if (!extracted.isEmpty()) {
+                    returnString.append(extracted).append(" ");
+                }
+            } else if (startDot != -1) {
+                String extracted = splitStrings[i].substring(startDot + 1).trim();
+                if (!extracted.isEmpty()) {
+                    returnString.append(extracted).append(" ");
+                }
+            } else {
+                String extracted = splitStrings[i].trim();
+                if (!extracted.isEmpty()) {
+                    returnString.append(extracted).append(" ");
+                }
+            }
         }
 
-        String[] substrings = s.split("\\|");
-        StringBuilder result = new StringBuilder();
-        
-        for (String substring : substrings) {
-            String trimmed = substring.trim();
-            int firstDot = trimmed.indexOf('.');
-            int lastDot = trimmed.lastIndexOf('.');
-            
-            // If no dots found, skip this substring
-            if (firstDot == -1 || lastDot == -1) {
-                continue;
-            }
-            
-            // Extract between first and last dot
-            String extracted = trimmed.substring(firstDot + 1, lastDot).trim();
-            
-            // Only add if we found something between the dots
-            if (!extracted.isEmpty()) {
-                if (result.length() > 0) {
-                    result.append(" ");
-                }
-                result.append(extracted);
-            }
-        }
-        
-        return result.toString();
+        return returnString.toString().trim();
     }
 
     public static void main(String[] args) {
