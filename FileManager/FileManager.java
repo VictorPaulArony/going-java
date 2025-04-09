@@ -6,21 +6,16 @@ import java.nio.file.Paths;
 public class FileManager {
     public static void createFile(String fileName, String content) throws IOException {
         Path path = Paths.get(fileName);
-        Files.write(path, content.getBytes());
+        Files.writeString(path, content);  // Using writeString for better text handling
     }
 
     public static String getContentFile(String fileName) throws IOException {
         Path path = Paths.get(fileName);
-        byte[] bytes = Files.readAllBytes(path);
-        return new String(bytes);
+        return Files.readString(path);  // Using readString for consistent text reading
     }
 
-    public static void deleteFile(String fileName) {
-        try {
-            Path path = Paths.get(fileName);
-            Files.deleteIfExists(path);
-        } catch (IOException e) {
-            // Silently handle the exception as per requirements
-        }
+    public static void deleteFile(String fileName) throws IOException {
+        Path path = Paths.get(fileName);
+        Files.deleteIfExists(path);
     }
 }
