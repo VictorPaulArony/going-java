@@ -1,15 +1,22 @@
 public class DoOp {
     public static String operate(String[] args) {
-        if (args.length != 3) {
-            return "Error: Expected 3 arguments.";
+        // Validate the input: must have exactly 3 arguments
+        if (args == null || args.length != 3) {
+            return "Error";
         }
 
-        try {
-            int left = Integer.parseInt(args[0].trim());
-            String op = args[1].trim();
-            int right = Integer.parseInt(args[2].trim());
+        // Parse the left operand, operator, and right operand
+        String leftOperand = args[0];
+        String operator = args[1];
+        String rightOperand = args[2];
 
-            switch (op) {
+        try {
+            // Convert operands to integers
+            int left = Integer.parseInt(leftOperand);
+            int right = Integer.parseInt(rightOperand);
+
+            // Perform the operation based on the operator
+            switch (operator) {
                 case "+":
                     return String.valueOf(left + right);
                 case "-":
@@ -17,19 +24,23 @@ public class DoOp {
                 case "*":
                     return String.valueOf(left * right);
                 case "/":
-                    if (right == 0) return "Error: Division by zero.";
+                    if (right == 0) {
+                        return "Error"; // Division by zero
+                    }
                     return String.valueOf(left / right);
                 case "%":
-                    if (right == 0) return "Error: Modulo by zero.";
+                    if (right == 0) {
+                        return "Error"; // Modulo by zero
+                    }
                     return String.valueOf(left % right);
                 default:
-                    return "Error: Invalid operator.";
+                    return "Error"; // Invalid operator
             }
         } catch (NumberFormatException e) {
-            return "Error: Invalid number format.";
+            // Handle invalid number format
+            return "Error";
         }
     }
-
     // tester method
     public static void main(String[] args) {
         
