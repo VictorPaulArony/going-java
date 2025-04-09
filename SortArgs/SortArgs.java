@@ -1,9 +1,13 @@
+import java.util.Arrays; // Import the Arrays class from java.util
+
 public class SortArgs {
     public static void sort(String[] args) {
+        // Validate the input: must not be null
         if (args == null || args.length == 0) {
             System.out.println();
             return;
         }
+
         try {
             // Convert the array of strings to an array of integers
             int[] numbers = Arrays.stream(args)
