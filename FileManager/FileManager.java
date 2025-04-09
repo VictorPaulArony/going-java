@@ -5,8 +5,8 @@ import java.nio.file.Paths;
 public class FileManager {
     // Function to create a file with the specified name and content
     public static void createFile(String fileName, String content) throws IOException {
-        // Write the content to the file using Files.write
-        Files.write(Paths.get(fileName), content.getBytes());
+        // Write the content to the file using Files.write with UTF-8 encoding
+        Files.write(Paths.get(fileName), content.getBytes("UTF-8"));
     }
 
     // Function to retrieve the content of a file
@@ -17,8 +17,8 @@ public class FileManager {
             throw new FileNotFoundException("File not found: " + fileName);
         }
 
-        // Read the content of the file using Files.readAllBytes
-        return new String(Files.readAllBytes(Paths.get(fileName)));
+        // Read the content of the file using Files.readAllBytes with UTF-8 encoding
+        return new String(Files.readAllBytes(Paths.get(fileName)), "UTF-8");
     }
 
     // Function to delete a file
