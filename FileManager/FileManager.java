@@ -33,25 +33,14 @@ public class FileManager {
      * @throws IOException if an I/O error occurs
      */
     public static String getContentFile(String fileName) throws IOException {
-        BufferedReader reader = null;
         StringBuilder content = new StringBuilder();
-        try {
-            reader = new BufferedReader(new FileReader(fileName));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                content.append(line);
-                content.append(System.lineSeparator());
-            }
-            // Remove the last line separator if there is one
-            if (content.length() > 0) {
-                content.setLength(content.length() - System.lineSeparator().length());
-            }
-            return content.toString();
-        } finally {
-            if (reader != null) {
-                reader.close();
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            int c;
+            while ((c = reader.read()) != -1) {
+                content.append((char) c);
             }
         }
+        return content.toString();
     }
     
     /**
