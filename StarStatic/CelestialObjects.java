@@ -1,4 +1,4 @@
-public class CelestialObject {
+public class CelestialObjects {
     private double x ;
     private double y;
     private double z ;
@@ -71,3 +71,4 @@ public class CelestialObject {
         System.out.println(CelestialObject.KM_IN_ONE_AU);
     }
 }
+
