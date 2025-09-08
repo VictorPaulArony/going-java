@@ -1,2 +1,16 @@
 # going-java
-git push --mirror https://learn.zone01kisumu.ke/git/viarony/piscine-java.git
+
+## How to run the code 
+
+```bash
+javac fileName.java
+java fileName
+```
+
+
+## How to test the java code
+
+```bash
+javac < TestFileName.java >
+java -ea < TestFileName >
+```
