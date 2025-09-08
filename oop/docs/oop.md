@@ -267,7 +267,7 @@ final class ConstantClass {
 ```java
 class Animal {
     void sound() {
-        System.out.println("Animal sound");
+        System.out.println("Animal.java sound");
     }
 }
 
