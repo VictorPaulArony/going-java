@@ -3,6 +3,7 @@ package com.todo.list.model;
 import jakarta.persistence.*;
 
 @Entity
+@Data
 public class TodoItem {
 
     @Id
