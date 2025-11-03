@@ -1,17 +1,14 @@
 public class IsEven {
     public static boolean isEven(int a) {
-        if (a%2 == 0) {
+        if(a%2==0) {
             return true;
         }
         return false;
     }
 
-    //tester method main
     public static void main(String[] args) {
-        int a = 19;
-        int b = 20;
-        System.out.println(isEven(a));
-        System.out.println(isEven(b));
+        System.out.println(IsEven.isEven(2));
+        System.out.println(IsEven.isEven(26));
+        System.out.println(IsEven.isEven(57));
     }
-
 }
