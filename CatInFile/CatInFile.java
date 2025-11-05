@@ -11,9 +11,10 @@ public class CatInFile {
         String file = args[0];
 
         try (InputStream input = System.in; OutputStream out = new FileOutputStream(file)) {
+            byte[] buffer = new byte[1024];
             int b;
-            while ((b = input.read()) != -1) {
-                out.write(b); 
+            while ((b = input.read(buffer)) != -1) {
+                out.write(buffer, 0, b); 
             }
         } catch (Exception e) {
             return;
