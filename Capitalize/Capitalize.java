@@ -10,12 +10,13 @@ public class Capitalize {
 
         String inFile = args[0];
         String outFile = args[1];
-       String content = new String(Files.readAllBytes(Paths.get(inFile)));
-       Files.write(Paths.get(outFile), content.getBytes());
+        String content = new String(Files.readAllBytes(Paths.get(inFile)));
+        String[] words = content.split("\\s+");
+        Files.write(Paths.get(outFile), words.toString().getBytes());
     }
 
     public static void main(String[] args) throws IOException {
-        Capitalize.capitalize(new String[]{"input", "output"});
+        Capitalize.capitalize(new String[] { "input", "output" });
         String expectedResult = new String(Files.readAllBytes(Paths.get("result")));
         String userOutput = new String(Files.readAllBytes(Paths.get("output")));
         System.out.println(expectedResult.equals(userOutput));
