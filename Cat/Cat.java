@@ -1,26 +1,29 @@
 import java.io.*;
 
 public class Cat {
-    public static void cat(String[] args) throws IOException {
+   public static void cat(String[] args) throws IOException {
+        // Check if a filename is provided
         if (args == null || args.length == 0) {
             return; 
         }
+
         String fileName = args[0];
         File file = new File(fileName);
 
-        if (!file.exists()|| !file.isFile() || file.canRead()) {
+        if (!file.exists() || !file.isFile() || !file.canRead()) {
+            return; 
+        }
+
+        try (InputStream inputStream = new FileInputStream(file)) {
+            byte[] buffer = new byte[1024]; 
+            int bytesRead;
+
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                System.out.write(buffer, 0, bytesRead);
+            }
+        } catch (IOException e) {
             return;
         }
-
-        try (BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(file))){
-            int b;
-            while ((b = inputStream.read()) != -1) {
-                System.out.write(b);
-            }
-        } catch (Exception e) {
-           return;
-        }
-
     }
 
     public static void main(String[] args) throws IOException {
