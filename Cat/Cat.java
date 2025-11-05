@@ -12,7 +12,7 @@ public class Cat {
             return;
         }
 
-        try (InputStream inputStream = new FileInputStream(file)){
+        try (BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(file))){
             int b;
             while ((b = inputStream.read()) != -1) {
                 System.out.write(b);
