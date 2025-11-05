@@ -11,7 +11,7 @@ public class Capitalize {
         String inFile = args[0];
         String outFile = args[1];
        String content = new String(Files.readAllBytes(Paths.get(inFile)));
-       Files.write(Paths.get(inFile), content.getBytes());
+       Files.write(Paths.get(outFile), content.getBytes());
     }
 
     public static void main(String[] args) throws IOException {
