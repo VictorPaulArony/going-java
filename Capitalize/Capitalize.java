@@ -8,11 +8,28 @@ public class Capitalize {
             return;
         }
 
-        String inFile = args[0];
-        String outFile = args[1];
-        String content = new String(Files.readAllBytes(Paths.get(inFile)));
+        String inputFile = args[0];
+        String outputFile = args[1];
+        String content = new String(Files.readAllBytes(Paths.get(inputFile)));
+        
         String[] words = content.split("\\s+");
-        Files.write(Paths.get(outFile), words.toString().getBytes());
+        StringBuilder result = new StringBuilder();
+        
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                if (result.length() > 0) {
+                    result.append(" ");
+                }
+                if (word.length() == 1) {
+                    result.append(word.toUpperCase());
+                } else {
+                    result.append(Character.toUpperCase(word.charAt(0)))
+                          .append(word.substring(1).toLowerCase());
+                }
+            }
+        }
+        
+        Files.write(Paths.get(outputFile), result.toString().getBytes());
     }
 
     public static void main(String[] args) throws IOException {
