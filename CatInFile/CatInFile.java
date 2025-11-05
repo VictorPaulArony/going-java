@@ -13,7 +13,7 @@ public class CatInFile {
         try (InputStream input = System.in; OutputStream out = new FileOutputStream(file)) {
             int b;
             while ((b = input.read()) != -1) {
-                out.write(b);
+                out.write(b); 
             }
         } catch (Exception e) {
             return;
