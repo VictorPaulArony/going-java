@@ -1,8 +1,8 @@
 public class DoOp {
     private static final  String ERROR = "Error";
     public static String operate(String[] args) {
-        if (args.length != 3) {
-            return "it depend on the input.";
+        if (args == null || args.length != 3) {
+            return ERROR;
         }
         String str1 = args[0];
         String op = args[1];
