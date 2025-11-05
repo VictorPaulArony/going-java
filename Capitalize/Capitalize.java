@@ -10,16 +10,8 @@ public class Capitalize {
 
         String inFile = args[0];
         String outFile = args[1];
-        try (InputStream in = new FileInputStream(inFile); FileWriter writer = new FileWriter(outFile)){
-            byte[] buff = new byte[1024];
-            int b;
-            while((b = in.read(buff)) != -1) {
-                writer.write(new String(buff, 0, b));
-            }
-            
-        } catch (Exception e) {
-           return ;
-        }
+       String content = new String(Files.readAllBytes(Paths.get(inFile)));
+       Files.write(Paths.get(inFile), content.getBytes());
     }
 
     public static void main(String[] args) throws IOException {
