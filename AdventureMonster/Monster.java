@@ -6,11 +6,11 @@ public class Monster extends Character {
 
     @Override
     public String toString() {
-        if (this.isAlive()) {
-            return getName() + " is a monster with " + getCurrentHealth() + " HP";
-        } else {
-            return getName() + " is a monster and is dead";
+        if (super.getCurrentHealth() > 0) {
+            return super.getName() + " is a monster with " + String.valueOf(super.getCurrentHealth()) + " HP";
         }
+        return super.getName() + " is a monster and is dead";
+
     }
 
     public static void main(String[] args) {
