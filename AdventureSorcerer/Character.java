@@ -23,6 +23,9 @@ public class Character {
      public String getName(){
         return name;
     }
+    public void setCurrentHealth(int currentHealth) {
+         this.currentHealth=currentHealth;
+    }
 
     public void takeDamage(int param){
         currentHealth-=param;
