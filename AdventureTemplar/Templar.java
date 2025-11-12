@@ -35,8 +35,8 @@ public class Templar extends Character implements Tank, Healer {
             .append(super.getCurrentHealth()).append(" HP. It can heal ")
             .append(healCapacity).append(" HP and has a shield of ").append(shield).append(".").toString();
         }
-        return str.append(super.getName()).append(" is a dead sorcerer. So bad, it could heal ")
-        .append(healCapacity).append(" HP.").toString();
+        return str.append(super.getName()).append(" has been beaten, even with its ")
+        .append(shield).append(" shield. So bad, it could heal ").append(healCapacity).append(" HP.").toString();
 
     }
 
