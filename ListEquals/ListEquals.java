@@ -5,12 +5,11 @@ public class ListEquals {
         if (list1.size() != list2.size()) {
             return false;
         }
-        for(int i=0; i < list1.size(); i++) {
-                if(!list1.get(i).equals(list2.get(i))) {
-                    return false;
-            }
+        if (list1.equals(list2)) {
+            return true;
         }
-        return true;
+        
+        return false;
     }
 
     public static void main(String[] args) {
