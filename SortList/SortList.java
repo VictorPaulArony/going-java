@@ -5,12 +5,18 @@ import java.util.List;
 public class SortList {
 
     public static List<Integer> sort(List<Integer> list) {
+        if (list == null) {
+            return null;
+        }
         List<Integer> l = new ArrayList<>(list);
         Collections.sort(l);
         return l;
     }
 
     public static List<Integer> sortReverse(List<Integer> list) {
+        if (list == null) {
+            return null;
+        }
         List<Integer> l = new ArrayList<>(list);
         Collections.sort(l);
         Collections.reverse(l);
