@@ -2,12 +2,12 @@ import java.util.List;
 
 public class ListContains {
     public static boolean containsValue(List<Integer> list, Integer value) {
-       for (Integer val : list) {
-        if (val == value) {
-            return true;
+        for (Integer val : list) {
+            if (val.equals(value)) {
+                return true;
+            }
         }
-       }
-       return false;
+        return false;
     }
 
     public static void main(String[] args) {
