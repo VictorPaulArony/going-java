@@ -6,11 +6,17 @@ public class ListSearchIndex {
        if (list == null) {
         return null;
        }
+         if (!list.contains(value)) {
+          return null;
+         }
        return list.lastIndexOf(value);
     }
 
     public static Integer findFirstIndex(List<Integer> list, Integer value) {
-       if (list == null) {
+       if (list == null ) {
+        return null;
+       }
+       if (!list.contains(value)) {
         return null;
        }
        return list.indexOf(value);
@@ -20,6 +26,9 @@ public class ListSearchIndex {
         List<Integer> res = new ArrayList<>();
         if (list == null) {
         return list;
+       }
+       if (!list.contains(value)) {
+        return res;
        }
        for (int i=0; i< list.size(); i++) {
         if (value.equals(list.get(i))){
