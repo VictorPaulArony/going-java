@@ -17,8 +17,10 @@ public class ParseDate {
         if (stringDate == null || stringDate.isBlank()) {
             return null;
         }
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
                 "EEEE d MMMM yyyy", Locale.FRENCH);
+
         return LocalDate.parse(stringDate, formatter);
     }
 
@@ -27,13 +29,10 @@ public class ParseDate {
             return null;
         }
 
-        // Example input:
-        // "09 heures du soir, 07 minutes et 23 secondes"
-
         // Extract numbers
         String[] parts = stringDate.split("[^0-9]+");
         if (parts.length < 3) {
-            return null; // invalid format
+            return null;
         }
 
         int hour = Integer.parseInt(parts[0]);
@@ -42,12 +41,27 @@ public class ParseDate {
 
         String lower = stringDate.toLowerCase();
 
-        // Handle French AM/PM
-        if (lower.contains("soir") || lower.contains("après-midi") || lower.contains("apres-midi")) {
-            if (hour < 12) hour += 12;
+        // French + English PM indicators
+        boolean isPM =
+                lower.contains("soir") ||
+                lower.contains("après-midi") ||
+                lower.contains("apres-midi") ||
+                lower.contains("evening") ||
+                lower.contains("afternoon");
+
+        // French + English AM indicators
+        boolean isAM =
+                lower.contains("matin") ||
+                lower.contains("morning");
+
+        // PM conversion
+        if (isPM && hour < 12) {
+            hour += 12;
         }
-        if (lower.contains("matin")) {
-            if (hour == 12) hour = 0;
+
+        // AM 12 → 00
+        if (isAM && hour == 12) {
+            hour = 0;
         }
 
         return LocalTime.of(hour, minute, second);
