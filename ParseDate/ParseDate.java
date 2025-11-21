@@ -18,10 +18,20 @@ public class ParseDate {
             return null;
         }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
+        DateTimeFormatter fr = DateTimeFormatter.ofPattern(
                 "EEEE d MMMM yyyy", Locale.FRENCH);
+        DateTimeFormatter en = DateTimeFormatter.ofPattern(
+                "EEEE d MMMM yyyy", Locale.ENGLISH);
 
-        return LocalDate.parse(stringDate, formatter);
+        try {
+            return LocalDate.parse(stringDate, en);
+        } catch (Exception ignored) {}
+
+        try {
+            return LocalDate.parse(stringDate, fr);
+        } catch (Exception ignored) {}
+
+        return null; // neither EN nor FR worked
     }
 
     public static LocalTime parseTimeFormat(String stringDate) {
@@ -54,12 +64,12 @@ public class ParseDate {
                 lower.contains("matin") ||
                 lower.contains("morning");
 
-        // PM conversion
+        // Apply PM conversion
         if (isPM && hour < 12) {
             hour += 12;
         }
 
-        // AM 12 → 00
+        // Apply AM midnight conversion
         if (isAM && hour == 12) {
             hour = 0;
         }
