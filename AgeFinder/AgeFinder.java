@@ -5,14 +5,6 @@ import java.time.format.DateTimeFormatter;
 public class AgeFinder {
     public int calculateAge(String date) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-        LocalDate now = LocalDate.now();
-        LocalDate dob = LocalDate.parse(date, formatter);
-
-        Period period = Period.between(dob, now);
-        
-        return period.getYears();
     }
 
     public static void main(String[] args) {
